@@ -1,0 +1,284 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 10-Nov-2021, 09:50:32
+    Author     : Geoffrey
+*/
+
+@font-face {
+    src: url('Poppins-Regular.ttf');
+}
+
+.root {
+    -fx-font-family: 'Poppins';
+    -fx-background-color:  #B4E4F6;
+}
+
+.split-pane {
+    -fx-background-color:  #B4E4F6;
+}
+
+.card-view {
+    -fx-background-radius: 8;
+    -fx-background-color: #75D3F7;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.card-view:hover {
+    -fx-background-color: #207EA2;
+}
+
+.label-item-view {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 12px;
+}
+
+.member-image-view {
+    -fx-background-radius: 30;
+    -fx-background-color: #75D3F7;
+}
+
+.labelBig {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 2.5em;
+    -fx-text-fill: #000000;
+}
+
+.label-card {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 18px;
+    -fx-text-alignment: CENTER;
+    -fx-text-fill: #000000;
+}
+
+.label-caption {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 13px;
+    -fx-text-alignment: CENTER;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.labelLogin {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 12px;
+    -fx-text-fill: #000000;
+}
+
+.labelError {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FF0000;
+}
+
+.labelStudentInfo {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.button-normal {
+    -fx-background-radius: 0;
+    -fx-background-color: #30BDF3;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button-normal:hover {
+    -fx-background-color: #8FDBF9;
+}
+
+.buttonLogin {
+    -fx-background-radius: 20;
+    -fx-background-color: #30BDF3;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 20px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.buttonLogin:hover {
+    -fx-background-color: #8FDBF9;
+}
+
+.buttonAddImage {
+    -fx-background-radius: 20;
+    -fx-background-color: #30BDF3;
+    -fx-font-family: 'Poppins-Regular';
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.buttonAddImage:hover {
+    -fx-background-color: #8FDBF9;
+}
+
+.button-delete {
+    -fx-background-radius: 0;
+    -fx-background-color: #CA0505;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button-delete:hover {
+    -fx-background-color: #DB5858;
+}
+
+.textField {
+    -fx-background-color: #EFF3F6;
+    -fx-border-color: #30BDF3;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 14px;
+}
+
+.textFieldStudentInfo {
+    -fx-background-color: #EFF3F6;
+    -fx-border-color: #30BDF3;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.comboBox {
+    -fx-background-color: #EFF3F6;
+    -fx-border-color: #30BDF3;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 14px;
+}
+
+.radioButton {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 14px;
+}
+
+.radioButton .radio{
+    -fx-border-width: 1px;
+    -fx-border-color: #30BDF3;
+    -fx-background-color: #FFFFFF;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+}
+
+.radioButton .radio:selected{
+    -fx-background-color: #30BDF3;
+}
+
+.radioButton .dot{
+    -fx-mark-highlight-color: #30BDF3;
+    -fx-mark-color: #30BDF3;
+}
+
+.checkBox {
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 14px;
+}
+
+.checkBox:selected .mark {
+    -fx-background-color: #FFFFFF;
+}
+
+.checkBox:selected .box {
+    -fx-background-color: #30BDF3;
+}
+
+.table-view,
+.table-view .column-header,
+.table-view .column-header-background .filler,
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #30BDF3;
+    -fx-text-background-color: white;
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 0px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #3A86A3;
+    -fx-text-background-color: #FFFFFF;
+}
+
+/**
+.table-row-cell:odd{
+    -fx-background-color: #B4E4F6;
+    -fx-background-insets: 0,0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:even{
+    -fx-background-color: #B4E4F6;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell: highlighted {
+    -fx-background-color: #30BDF3;
+    -fx-background-radius: 5px;
+    -fx-background-insets: 2px;
+}
+**/
+
+.table-row-cell: selected {
+    -fx-background-color: #30BDF3;
+    -fx-text-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-background-insets: 2px;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: #B4E4F6;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track, scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
+    -fx-background-color: #75D3F7;
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
+
+
+
+

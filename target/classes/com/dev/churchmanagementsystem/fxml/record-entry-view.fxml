@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DialogPane stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="681.0" stylesheets="@../css/style.css">
+         <children>
+            <Label alignment="CENTER" styleClass="labelBig" text="Record" />
+            <DatePicker fx:id="datePicker" prefWidth="755.0" styleClass="textField">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="180.0" right="180.0" top="10.0" />
+               </VBox.margin>
+            </DatePicker>
+            <HBox prefWidth="200.0">
+               <children>
+                  <TextField fx:id="textFieldMales" prefWidth="755.0" promptText="Males" styleClass="textField">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="textFieldFemales" prefWidth="755.0" promptText="Females" styleClass="textField" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="180.0" right="180.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefWidth="200.0">
+               <children>
+                  <TextField fx:id="textFieldChildren" prefWidth="755.0" promptText="Children" styleClass="textField">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="textFieldVisitors" prefWidth="755.0" promptText="Visitors" styleClass="textField" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="180.0" right="180.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefWidth="200.0">
+               <children>
+                  <TextField fx:id="textFieldGiving" prefWidth="755.0" promptText="Giving" styleClass="textField">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="textFieldThanksgiving" layoutX="10.0" layoutY="10.0" prefWidth="755.0" promptText="Thanksgiving" styleClass="textField" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="180.0" right="180.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefWidth="200.0">
+               <children>
+                  <TextField fx:id="textFieldTotalAttendance" prefWidth="755.0" promptText="Total Attendance" styleClass="textField">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="textFieldTotalGiving" layoutX="10.0" layoutY="10.0" prefWidth="755.0" promptText="Total Giving" styleClass="textField" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="180.0" right="180.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</DialogPane>

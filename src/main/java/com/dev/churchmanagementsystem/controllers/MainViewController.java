@@ -6,6 +6,7 @@ import com.dev.churchmanagementsystem.models.DataManager;
 import com.dev.churchmanagementsystem.models.Giving;
 import com.dev.churchmanagementsystem.models.Member;
 import com.dev.churchmanagementsystem.models.Record;
+import com.dev.churchmanagementsystem.utils.Database;
 import javafx.beans.binding.Bindings;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -17,13 +18,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static com.dev.churchmanagementsystem.utils.Constants.LOGIN_VIEW;
 import static com.dev.churchmanagementsystem.utils.Constants.REGISTRATION_VIEW;
-import static com.dev.churchmanagementsystem.utils.Helpers.navigateToPage;
-import static com.dev.churchmanagementsystem.utils.Helpers.showActionStage;
+import static com.dev.churchmanagementsystem.utils.Helpers.*;
 
 public class MainViewController implements Initializable {
 
@@ -36,9 +40,6 @@ public class MainViewController implements Initializable {
 
     @FXML
     private Button buttonAccountEdit;
-
-    @FXML
-    private Button buttonAccounts;
 
     @FXML
     private Button buttonAttendance;
@@ -153,9 +154,6 @@ public class MainViewController implements Initializable {
         if (event.getSource() == buttonMembers) {
             paneMembers.toFront();
         }
-        if (event.getSource() == buttonAccounts) {
-            paneAccounts.toFront();
-        }
         if (event.getSource() == buttonRecords) {
             paneRecords.toFront();
         }
@@ -231,6 +229,9 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // Dashboard
+        getGiving();
         initRecordsTable();
 
         // Search Member
@@ -273,5 +274,20 @@ public class MainViewController implements Initializable {
 
         buttonRecordEdit.disableProperty().bind(Bindings.isEmpty(tableRecords.getSelectionModel().getSelectedItems()));
         buttonRecordDelete.disableProperty().bind(Bindings.isEmpty(tableRecords.getSelectionModel().getSelectedItems()));
+    }
+
+    private void getGiving() {
+        String query = "select date, total_giving from records where id = (select max(id) from records)";
+        try (Connection connection = Database.connect()){
+            assert connection != null;
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                labelGivingDate.setText(dateUtil(rs.getString("date")));
+                labelGiving.setText("₵" + rs.getDouble("total_giving"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

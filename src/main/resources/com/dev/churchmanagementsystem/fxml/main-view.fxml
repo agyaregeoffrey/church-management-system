@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="658.0" prefWidth="1180.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.churchmanagementsystem.controllers.MainViewController">
+<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="658.0" prefWidth="1180.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.churchmanagementsystem.controllers.MainView">
    <children>
       <VBox prefHeight="658.0" prefWidth="309.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -52,18 +42,6 @@
                   <Insets left="40.0" />
                </padding>
             </Button>
-            <Button fx:id="buttonAttendance" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="10.0" layoutY="430.0" mnemonicParsing="false" onAction="#mainViewButtonEvents" prefHeight="50.0" prefWidth="338.0" styleClass="button-normal" text="Attendance">
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_attendance_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="buttonMembers" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" onAction="#mainViewButtonEvents" prefHeight="50.0" prefWidth="338.0" styleClass="button-normal" text="Members">
                <padding>
                   <Insets left="40.0" />
@@ -76,7 +54,19 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="buttonRecords" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="10.0" layoutY="430.0" mnemonicParsing="false" onAction="#mainViewButtonEvents" prefHeight="50.0" prefWidth="338.0" styleClass="button-normal" text="Attendance &amp; Records">
+            <Button fx:id="buttonAttendance" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="10.0" layoutY="440.0" mnemonicParsing="false" onAction="#mainViewButtonEvents" prefHeight="50.0" prefWidth="338.0" styleClass="button-normal" text="Attendance">
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_attendance_48px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="buttonRecords" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="10.0" layoutY="430.0" mnemonicParsing="false" onAction="#mainViewButtonEvents" prefHeight="50.0" prefWidth="338.0" styleClass="button-normal" text="Records">
                <padding>
                   <Insets left="40.0" />
                </padding>
@@ -84,6 +74,18 @@
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/icons8_edit_pie_chart_report_100px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="buttonAccounts" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="10.0" layoutY="490.0" mnemonicParsing="false" onAction="#mainViewButtonEvents" prefHeight="50.0" prefWidth="338.0" styleClass="button-normal" text="Accounts">
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_us_dollar_48px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -105,28 +107,52 @@
       <Separator layoutX="306.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <StackPane layoutX="320.0" prefHeight="658.0" prefWidth="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Pane fx:id="paneAttendance" layoutX="10.0" layoutY="10.0" prefHeight="658.0" prefWidth="834.0" styleClass="root" stylesheets="@../css/style.css">
+               <children>
+                  <Label styleClass="labelBig" text="Attendance" />
+                  <TableView fx:id="tableAttendance" layoutY="43.0" prefHeight="540.0" prefWidth="839.0">
+                     <columns>
+                        <TableColumn fx:id="columnAttendanceID" prefWidth="75.0" resizable="false" text="S/N" />
+                        <TableColumn fx:id="columnAttendanceName" minWidth="-Infinity" prefWidth="261.0" resizable="false" text="Name" />
+                        <TableColumn fx:id="columnAttendanceDate" minWidth="-Infinity" prefWidth="221.0" resizable="false" text="Date" />
+                        <TableColumn fx:id="columnAttendanceStatus" minWidth="-Infinity" prefWidth="157.0" resizable="false" text="Status" />
+                        <TableColumn fx:id="columnAttendanceGender" minWidth="-Infinity" prefWidth="124.0" resizable="false" text="Gender" />
+                     </columns>
+                  </TableView>
+                  <TextField fx:id="textFieldAttendanceSearch" layoutX="604.0" layoutY="8.0" prefHeight="32.0" prefWidth="232.0" promptText="Search" styleClass="textField">
+                     <padding>
+                        <Insets left="5.0" right="30.0" />
+                     </padding>
+                  </TextField>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="808.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_search_60px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
             <Pane fx:id="paneMembers" layoutX="10.0" layoutY="10.0" prefHeight="658.0" prefWidth="834.0" styleClass="root" stylesheets="@../css/style.css">
                <children>
                   <Label styleClass="labelBig" text="Members" />
-                  <Button fx:id="buttonRegister" layoutX="198.0" layoutY="597.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="Register">
+                  <Button fx:id="buttonRegister" layoutX="144.0" layoutY="597.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="Register">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/icons8_add_60px.png" />
+                              <Image url="@../images/icons8_add_administrator_100px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="buttonEdit" layoutX="364.0" layoutY="597.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="Edit">
+                  <Button fx:id="buttonEdit" layoutX="320.0" layoutY="597.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="View/Edit">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/icons8_add_60px.png" />
+                              <Image url="@../images/icons8_edit_64px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="buttonDelete" layoutX="527.0" layoutY="597.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-delete" text="Delete">
+                  <Button fx:id="buttonDelete" layoutX="671.0" layoutY="597.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-delete" text="Delete">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -141,10 +167,10 @@
                       <TableColumn fx:id="columnName" minWidth="-Infinity" prefWidth="262.0" resizable="false" text="Name" />
                         <TableColumn fx:id="columnTelephone" minWidth="-Infinity" prefWidth="169.0" resizable="false" text="Telephone" />
                         <TableColumn fx:id="columnDateBaptized" minWidth="-Infinity" prefWidth="172.0" resizable="false" text="Date Baptized" />
-                        <TableColumn prefWidth="160.0" resizable="false" text="Address" />
+                        <TableColumn fx:id="columnAddress" prefWidth="160.0" resizable="false" text="Residence" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="textFieldMembersSearch" layoutX="604.0" layoutY="8.0" prefHeight="32.0" prefWidth="232.0" styleClass="textField">
+                  <TextField fx:id="textFieldMemberSearch" layoutX="604.0" layoutY="8.0" prefHeight="32.0" prefWidth="232.0" promptText="Search" styleClass="textField">
                      <padding>
                         <Insets left="5.0" right="30.0" />
                      </padding>
@@ -154,62 +180,20 @@
                         <Image url="@../images/icons8_search_60px.png" />
                      </image>
                   </ImageView>
-               </children>
-            </Pane>
-            <Pane fx:id="paneAccounts" layoutX="10.0" layoutY="10.0" prefHeight="658.0" prefWidth="834.0" styleClass="root" stylesheets="@../css/style.css">
-               <children>
-                  <Label styleClass="labelBig" text="Accounts" />
-                  <TableView fx:id="tableAccounts" layoutY="43.0" prefHeight="540.0" prefWidth="839.0">
-                     <columns>
-                        <TableColumn fx:id="columnAccountID" resizable="false" text="S/N" />
-                        <TableColumn fx:id="columnAccountDate" minWidth="-Infinity" prefWidth="190.0" resizable="false" text="Date" />
-                        <TableColumn fx:id="columnAccountGiving" minWidth="-Infinity" prefWidth="190.0" resizable="false" text="Giving" />
-                        <TableColumn fx:id="columnAccountThanksgiving" minWidth="-Infinity" prefWidth="190.0" resizable="false" text="Thanksgiving" />
-                        <TableColumn fx:id="columnAccountTotal" minWidth="-Infinity" prefWidth="190.0" resizable="false" text="Total" />
-                     </columns>
-                  </TableView>
-                  <Button fx:id="buttonAccountDelete" layoutX="454.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-delete" text="Delete">
+                  <Button fx:id="buttonMarkAttendance" layoutX="494.0" layoutY="597.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="Attendance">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/icons8_trash_52px.png" />
+                              <Image url="@../images/icons8_attendance_100px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="buttonAccountEdit" layoutX="288.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="Edit">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_add_60px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="buttonAccountAdd" layoutX="121.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="Add">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_add_60px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <TextField fx:id="textFieldAccountSearch" layoutX="604.0" layoutY="6.0" prefHeight="32.0" prefWidth="232.0" styleClass="textField">
-                     <padding>
-                        <Insets left="5.0" right="30.0" />
-                     </padding>
-                  </TextField>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="808.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_search_60px.png" />
-                     </image>
-                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="paneRecords" layoutX="10.0" layoutY="10.0" prefHeight="658.0" prefWidth="834.0" styleClass="root" stylesheets="@../css/style.css">
                <children>
-                  <Label styleClass="labelBig" text="Attendance &amp; Records" />
+                  <Label styleClass="labelBig" text="Records" />
                   <TableView fx:id="tableRecords" layoutY="43.0" prefHeight="540.0" prefWidth="839.0">
                      <columns>
                         <TableColumn fx:id="columnRecordID" prefWidth="75.0" resizable="false" text="S/N" />
@@ -237,21 +221,72 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/icons8_add_60px.png" />
+                              <Image url="@../images/icons8_edit_64px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="buttonRecordAdd" layoutX="121.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="Add">
+                  <Button fx:id="buttonRecordAdd" layoutX="121.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="New">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/icons8_add_60px.png" />
+                              <Image url="@../images/icons8_add_to_database_48px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextField fx:id="textFieldRecordSearch" layoutX="604.0" layoutY="6.0" prefHeight="32.0" prefWidth="232.0" styleClass="textField">
+                  <TextField fx:id="textFieldRecordSearch" layoutX="604.0" layoutY="6.0" prefHeight="32.0" prefWidth="232.0" promptText="Search" styleClass="textField">
+                     <padding>
+                        <Insets left="5.0" right="30.0" />
+                     </padding>
+                  </TextField>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="808.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_search_60px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="paneAccounts" layoutX="10.0" layoutY="10.0" prefHeight="658.0" prefWidth="834.0" styleClass="root" stylesheets="@../css/style.css">
+               <children>
+                  <Label styleClass="labelBig" text="Accounts" />
+                  <TableView fx:id="tableAccounts" layoutY="43.0" prefHeight="540.0" prefWidth="839.0">
+                     <columns>
+                        <TableColumn fx:id="columnAccountID" resizable="false" text="S/N" />
+                        <TableColumn fx:id="columnAccountDate" minWidth="-Infinity" prefWidth="190.0" resizable="false" text="Date" />
+                        <TableColumn fx:id="columnAccountGiving" minWidth="-Infinity" prefWidth="190.0" resizable="false" text="Giving" />
+                        <TableColumn fx:id="columnAccountThanksgiving" minWidth="-Infinity" prefWidth="190.0" resizable="false" text="Thanksgiving" />
+                        <TableColumn fx:id="columnAccountTotal" minWidth="-Infinity" prefWidth="190.0" resizable="false" text="Total" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="buttonAccountDelete" layoutX="454.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-delete" text="Delete" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_trash_52px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="buttonAccountEdit" layoutX="288.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="Edit" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_edit_64px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="buttonAccountAdd" layoutX="121.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickAction" prefWidth="150.0" styleClass="button-normal" text="New" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_us_dollar_48px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="textFieldAccountSearch" layoutX="604.0" layoutY="6.0" prefHeight="32.0" prefWidth="232.0" styleClass="textField">
                      <padding>
                         <Insets left="5.0" right="30.0" />
                      </padding>
@@ -278,17 +313,17 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label styleClass="label-card" text="Church">
+                              <Label alignment="CENTER" styleClass="label-card" text="Church">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label styleClass="label-card" text="Membership">
+                              <Label alignment="CENTER" styleClass="label-card" text="Membership">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="labelTotalMembers" styleClass="labelBig" text="509">
+                              <Label fx:id="labelTotalMembers" alignment="CENTER" styleClass="labelBig">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -309,7 +344,7 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label fx:id="labelGivingDate" prefHeight="27.0" prefWidth="156.0" styleClass="label-card" text="21/10/21">
+                              <Label fx:id="labelGivingDate" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="156.0" styleClass="label-card" textAlignment="CENTER">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -319,7 +354,7 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="labelGiving" styleClass="labelBig" text="₵5,000.00">
+                              <Label fx:id="labelGiving" alignment="CENTER" prefHeight="54.0" prefWidth="213.0" styleClass="labelBig">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -340,17 +375,17 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label styleClass="label-card" text="Average">
+                              <Label alignment="CENTER" styleClass="label-card" text="Average">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label styleClass="label-card" text="Attendance">
+                              <Label alignment="CENTER" styleClass="label-card" text="Giving">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="labelAverageAttendance" styleClass="labelBig" text="200">
+                              <Label fx:id="labelAverageAttendance" alignment="CENTER" styleClass="labelBig">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -359,12 +394,7 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Label layoutY="241.0" styleClass="labelBig" text="Newly Baptized Members" />
-                  <TextField fx:id="textFieldSearch" layoutX="544.0" layoutY="241.0" prefHeight="32.0" prefWidth="232.0" styleClass="textField">
-                     <padding>
-                        <Insets left="5.0" right="30.0" />
-                     </padding>
-                  </TextField>
+                  <Label layoutY="241.0" styleClass="labelBig" text="Recently Added Members" />
                   <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="749.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/icons8_search_60px.png" />

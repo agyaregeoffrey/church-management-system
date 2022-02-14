@@ -1,6 +1,5 @@
 package com.dev.churchmanagementsystem.dao;
 
-import com.dev.churchmanagementsystem.models.Giving;
 import com.dev.churchmanagementsystem.models.Record;
 import com.dev.churchmanagementsystem.utils.Database;
 import javafx.collections.FXCollections;
@@ -11,8 +10,6 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static com.dev.churchmanagementsystem.utils.Helpers.dateUtil;
 
 public class RecordDAO {
     public static final String tableName = "records";
@@ -70,9 +67,39 @@ public class RecordDAO {
         // Insert into database
         int id = (int) CRUDHelper.create(
                 tableName,
-                new String[]{"date", "males", "females", "children", "visitors", "giving", "thanksgiving", "total_attendance", "total_giving"},
-                new Object[]{date, male, female, child, visitor, giving, thanksgiving, totalAttendance, totalGiving},
-                new int[]{Types.VARCHAR, Types.INTEGER, Types.INTEGER, Types.INTEGER, Types.INTEGER, Types.REAL, Types.REAL, Types.INTEGER, Types.REAL}
+                new String[]{
+                        "date",
+                        "males",
+                        "females",
+                        "children",
+                        "visitors",
+                        "giving",
+                        "thanksgiving",
+                        "total_attendance",
+                        "total_giving"
+                },
+                new Object[]{
+                        date,
+                        male,
+                        female,
+                        child,
+                        visitor,
+                        giving,
+                        thanksgiving,
+                        totalAttendance,
+                        totalGiving
+                },
+                new int[]{
+                        Types.VARCHAR,
+                        Types.INTEGER,
+                        Types.INTEGER,
+                        Types.INTEGER,
+                        Types.INTEGER,
+                        Types.REAL,
+                        Types.REAL,
+                        Types.INTEGER,
+                        Types.REAL
+                }
         );
 
 

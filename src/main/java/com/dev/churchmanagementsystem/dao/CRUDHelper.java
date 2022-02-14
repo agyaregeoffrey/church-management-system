@@ -2,6 +2,8 @@ package com.dev.churchmanagementsystem.dao;
 
 import com.dev.churchmanagementsystem.utils.Database;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
@@ -27,6 +29,8 @@ public class CRUDHelper {
                 switch (fieldDataType) {
                     case Types.INTEGER:
                         return rs.getInt(fieldName);
+                    case Types.BLOB:
+                        return rs.getBlob(fieldName);
                     case Types.VARCHAR:
                         return rs.getString(fieldName);
                     default:
@@ -65,8 +69,6 @@ public class CRUDHelper {
 
             return pstmt.executeUpdate(); //number of affected rows
         } catch (SQLException ex) {
-            System.out.println(queryBuilder);
-            System.out.println(ex);
             Logger.getAnonymousLogger().log(
                     Level.SEVERE,
                     LocalDateTime.now() + ": Could not add record to database");
@@ -94,6 +96,11 @@ public class CRUDHelper {
                 case Types.REAL:
                     queryBuilder.append((double) values[i]);
                     break;
+                case Types.BLOB:
+                    queryBuilder.append("'");
+                    queryBuilder.append(values[i]);
+                    queryBuilder.append("'");
+                    break;
                 case Types.INTEGER:
                     queryBuilder.append((int) values[i]);
             }
@@ -101,6 +108,7 @@ public class CRUDHelper {
         }
         queryBuilder.append(");");
 
+        System.out.println(queryBuilder);
         try (Connection conn = Database.connect()) {
             assert conn != null;
             PreparedStatement pstmt = conn.prepareStatement(queryBuilder.toString());
@@ -154,6 +162,8 @@ public class CRUDHelper {
             case Types.REAL:
                 queryBuilder.append((double) value);
                 break;
+            case Types.BLOB:
+                queryBuilder.append(value);
             case Types.INTEGER:
                 queryBuilder.append(value);
                 break;

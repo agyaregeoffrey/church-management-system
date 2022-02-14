@@ -12,22 +12,46 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GivingDAO {
-    public static final String tableName = "giving";
+    public static final String tableName = "records";
     public static final String idColumn = "id";
     public static final String dateColumn = "date";
     public static final String givingColumn = "giving";
     public static final String thanksgivingColumn = "thanksgiving";
-    public static final String totalGivingColumn = "total";
+    public static final String totalGivingColumn = "total_giving";
 
-    public static final ObservableList<Giving> givings;
+    private static final ObservableList<Giving> givings;
 
     static {
         givings = FXCollections.observableArrayList();
-        updateGivingsFromDB();
+        getGivingsFromDB();
     }
 
     public static ObservableList<Giving> getGivings() {
         return FXCollections.unmodifiableObservableList(givings);
+    }
+
+    private static void getGivingsFromDB() {
+        String query = "SELECT id, date, giving, thanksgiving, total_giving FROM " + tableName;
+        try (Connection connection = Database.connect()) {
+            assert connection != null;
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet rs = statement.executeQuery();
+            givings.clear();
+            while (rs.next()) {
+                givings.add(new Giving(
+                        rs.getInt(idColumn),
+                        rs.getString(dateColumn),
+                        rs.getDouble(givingColumn),
+                        rs.getDouble(thanksgivingColumn),
+                        rs.getDouble(totalGivingColumn)
+                ));
+            }
+        } catch (SQLException e) {
+            Logger.getAnonymousLogger().log(
+                    Level.SEVERE,
+                    LocalDateTime.now() + ": Could not load Givings from database ");
+            givings.clear();
+        }
     }
 
     private static void updateGivingsFromDB() {

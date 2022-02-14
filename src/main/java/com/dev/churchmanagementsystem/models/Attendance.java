@@ -1,21 +1,34 @@
 package com.dev.churchmanagementsystem.models;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 import java.util.Objects;
 
 public class Attendance {
+    private final IntegerProperty id = new SimpleIntegerProperty(this, "id", 0);
     private final StringProperty name = new SimpleStringProperty(this, "name", "");
     private final StringProperty date = new SimpleStringProperty(this, "date", "");
-    private final BooleanProperty attended = new SimpleBooleanProperty(this, "attended", false);
+    private final StringProperty status = new SimpleStringProperty(this, "status", "");
+    private final StringProperty gender = new SimpleStringProperty(this, "gender", "");
 
-    public Attendance(String name, String date, Boolean attended) {
+    public Attendance(Integer id, String name, String date, String status, String gender) {
+        this.id.set(id);
         this.name.set(name);
         this.date.set(date);
-        this.attended.set(attended);
+        this.status.set(status);
+        this.gender.set(gender);
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     public String getName() {
@@ -42,16 +55,24 @@ public class Attendance {
         this.date.set(date);
     }
 
-    public boolean attended() {
-        return attended.get();
+    public String getStatus() {
+        return status.get();
     }
 
-    public BooleanProperty attendedProperty() {
-        return attended;
+    public StringProperty statusProperty() {
+        return status;
     }
 
-    public void setAttended(boolean attended) {
-        this.attended.set(attended);
+    public void setStatus(String status) {
+        this.status.set(status);
+    }
+
+    public String getGender() {
+        return gender.get();
+    }
+
+    public StringProperty genderProperty() {
+        return gender;
     }
 
     @Override
@@ -59,12 +80,12 @@ public class Attendance {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attendance that = (Attendance) o;
-        return Objects.equals(name, that.name) && Objects.equals(date, that.date) && Objects.equals(attended, that.attended);
+        return Objects.equals(name, that.name) && Objects.equals(date, that.date) && Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date, attended);
+        return Objects.hash(name, date, status);
     }
 
     @Override

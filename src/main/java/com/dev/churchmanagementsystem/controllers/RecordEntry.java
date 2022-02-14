@@ -1,6 +1,7 @@
 package com.dev.churchmanagementsystem.controllers;
 
 import com.dev.churchmanagementsystem.MainApplication;
+import com.dev.churchmanagementsystem.dao.GivingDAO;
 import com.dev.churchmanagementsystem.dao.RecordDAO;
 import com.dev.churchmanagementsystem.models.Record;
 import javafx.beans.binding.Bindings;
@@ -17,10 +18,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
-import static com.dev.churchmanagementsystem.utils.Constants.RECORD_VIEW;
+import static com.dev.churchmanagementsystem.utils.Constants.*;
 import static com.dev.churchmanagementsystem.utils.Helpers.numberValidationFormatter;
 
-public class RecordEntryController extends Dialog<Record> implements Initializable {
+public class RecordEntry extends Dialog<Record> implements Initializable {
 
     @FXML
     private DatePicker datePicker;
@@ -53,6 +54,8 @@ public class RecordEntryController extends Dialog<Record> implements Initializab
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         datePicker.setValue(LocalDate.now());
+        textFieldMales.setText(String.valueOf(males));
+        textFieldFemales.setText(String.valueOf(females));
     }
 
     public void addRecord() {
@@ -64,7 +67,7 @@ public class RecordEntryController extends Dialog<Record> implements Initializab
         int totalAttendance = Integer.parseInt(textFieldTotalAttendance.getText());
         double giving = Double.parseDouble(textFieldGiving.getText());
         double thanksgiving = Double.parseDouble(textFieldThanksgiving.getText());
-        double totalGiving = Double.parseDouble(textFieldGiving.getText());
+        double totalGiving = Double.parseDouble(textFieldTotalGiving.getText());
 
         RecordDAO.insertRecord(date, males, females, children, visitors, totalAttendance, giving, thanksgiving, totalGiving);
     }

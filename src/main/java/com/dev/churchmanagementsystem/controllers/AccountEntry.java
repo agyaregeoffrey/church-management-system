@@ -20,7 +20,7 @@ import static com.dev.churchmanagementsystem.utils.Constants.ACCOUNTS_VIEW;
 import static com.dev.churchmanagementsystem.utils.Constants.RECORD_VIEW;
 import static com.dev.churchmanagementsystem.utils.Helpers.numberValidationFormatter;
 
-public class AccountEntryController extends Dialog<Giving> implements Initializable {
+public class AccountEntry extends Dialog<Giving> implements Initializable {
 
     @FXML
     private DatePicker datePicker;
